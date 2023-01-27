@@ -19,12 +19,17 @@ function App() {
     setInfos((prev) => [...prev, payload]);
   };
 
+  const deleteHandler = (id) => {
+    const filteredArr = infos.filter((info) => info.id !== id);
+    setInfos(filteredArr);
+  };
+
   return (
     <Fragment>
       <Header />
       <div className="d-flex">
         <Form onCallback={callback} />
-        <Contact infos={infos} />
+        <Contact infos={infos} onDelete={deleteHandler} />
       </div>
     </Fragment>
   );
